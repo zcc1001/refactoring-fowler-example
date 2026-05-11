@@ -43,7 +43,8 @@ public class Customer {
 		String result = statement.header(_name);
 		while (rentals.hasNext()) {
 			Rental each = rentals.next();
-			result += statement.rentalStatement(each.getMovie().getTitle(), each.getCharge());
+			result += statement.rentalStatement(each.getMovie().getTitle(),
+					each._movie.getCharge(each.getDaysRented()));
 		}
 		result += statement.footer(getTotalCharge(), this.getTotalFrequentRenterPoints());
 		return result;
@@ -54,7 +55,7 @@ public class Customer {
 		Iterator<Rental> rentals = _rentals.iterator();
 		while (rentals.hasNext()) {
 			Rental each = rentals.next();
-			result += each.getCharge();
+			result += each._movie.getCharge(each.getDaysRented());
 		}
 		return result;
 	}
@@ -64,7 +65,7 @@ public class Customer {
 		Iterator<Rental> rentals = _rentals.iterator();
 		while (rentals.hasNext()) {
 			Rental each = rentals.next();
-			result += each.getFrequentRenterPoints();
+			result += each._movie.getFrequentRenterPoints(each.getDaysRented());
 		}
 		return result;
 	}

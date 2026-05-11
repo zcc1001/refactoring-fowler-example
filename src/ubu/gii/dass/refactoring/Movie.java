@@ -1,4 +1,5 @@
 package ubu.gii.dass.refactoring;
+
 /**
  * Tema Refactorizaciones
  * 
@@ -35,4 +36,29 @@ public class Movie {
 	public String getTitle() {
 		return _title;
 	}
+
+	public double getCharge(int daysRented) {
+		return getPrice(getPriceCode()).getCharge(daysRented);
+	};
+
+	private Price getPrice(int priceCode) {
+		Price price = null;
+		switch (priceCode) {
+		case Movie.REGULAR:
+			price = new Regular();
+			break;
+		case Movie.NEW_RELEASE:
+			price = new NewRelease();
+			break;
+		case Movie.CHILDRENS:
+			price = new Childrens();
+			break;
+		}
+		return price;
+	}
+
+	public int getFrequentRenterPoints(int daysRented) {
+		return getPrice(getPriceCode()).getFrequentRenterPoints(daysRented);
+	}
+
 }
