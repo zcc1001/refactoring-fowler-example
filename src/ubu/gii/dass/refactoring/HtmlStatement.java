@@ -14,8 +14,8 @@ public class HtmlStatement extends Statement {
 
 	@Override
 	String footer(double totalAmount, int frequentRenterPoints) {
-		return "<p> Amount owed is " + String.valueOf(totalAmount) + "</p>\n" + "<p>You earned "
-				+ String.valueOf(frequentRenterPoints) + " frequent renter points</p>\n";
+		return "<p>Amount owed is " + String.valueOf(totalAmount) + "</p>\n" + "<p> You earned "
+				+ String.valueOf(frequentRenterPoints) + " frequent renter points </p>\n";
 	}
 
 }
